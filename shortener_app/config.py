@@ -16,4 +16,4 @@ class Settings(BaseSettings):
 def get_settings() -> Settings:
     settings = Settings()
     print(f"Loading Settings for: {settings.env_name}")
-    return Settings
+    return settings
