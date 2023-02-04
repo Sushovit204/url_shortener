@@ -8,9 +8,11 @@ class URL(URLBase):
     clicks: int
 
     class Config:
-        orm_model: True
+        orm_mode = True
 
 class URLInfo(URL):
     url: str
     admin_url: str
+
+    
 
