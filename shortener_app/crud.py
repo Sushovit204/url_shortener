@@ -27,7 +27,15 @@ def create_db_url(db: Session, url: schemas.URLBase) -> models.URL:
     return db_url
 
 def update_db_clicks(db:Session, db_url: schemas.URL) -> models.URL:
-    db_url_clicks +=1
+    db_url.clicks +=1
     db.commit()
     db.refresh(db_url)
+    return db_url
+
+def deactivate_db_url_by_secret_key(db:Session, secret_key: str) -> models.URL:
+    db_url = get_db_url_by_secret_key(db, secret_key)
+    if db_url:
+        db_url.is_active = False
+        db.commit()
+        db.refresh(db_url)
     return db_url
